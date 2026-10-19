@@ -3,7 +3,7 @@ name: Auto Conflict Creator
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: master
 
       - name: Configure Git
         run: |
@@ -29,4 +29,4 @@ jobs:
           echo "This file was automatically added by the conflict bot at $(date)." > $FILENAME
           git add $FILENAME
           git commit -m "Auto: Created $FILENAME to trigger merge conflict"
-          git push origin main
+          git push origin master
